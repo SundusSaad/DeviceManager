@@ -1,0 +1,47 @@
+<h1>List of devices</h1>
+<ul>
+  <li *ngFor='let device of devices'>{{device.id}} - {{device.deviceName}}</li>
+</ul>
+
+<br>
+
+<h1>Testdevice Manager - {{mitarbeiter}}</h1>
+<mat-form-field appearance="fill">
+  <mat-label>Deviceliste</mat-label>
+  <mat-select [(ngModel)]="selectedDevice">
+    <mat-option *ngFor="let device of devices" [value]="device.deviceName">
+      {{device.deviceName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+
+<h4>Aufgabe:</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Aufgabe:</mat-label>
+  <select matNativeControl required [(ngModel)]="selectedTask">
+    <option value="Implementation">Implementation</option>
+    <option value="tests">Tests</option>
+    <option value="presentation">presentation</option>
+  </select>
+</mat-form-field>
+
+<br>
+
+<section>
+    <div class="example-button-row">
+      <button (click)="onSaveClick()" color="primary">Speichern</button>
+      <button (click)="onRentClick()" color="accent">Ausleihen</button>
+    </div>
+  </section>
+
+  <br>
+
+  <div *ngIf="showDetials">
+    <h1> Detials: </h1>
+    <p>{{mitarbeiter}} has rented {{selectedDevice}} for {{selectedTask}} purpose</p>
+  </div>
+
+
+
